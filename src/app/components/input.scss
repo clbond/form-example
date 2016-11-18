@@ -1,0 +1,66 @@
+input {
+  padding: 5px;
+  margin: 2px;
+}
+
+.invalid {
+  border: 1px solid red;
+}
+
+.container {
+  margin: 0 auto;
+  position: relative;
+  background: white;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+
+  label {
+    display: inline-block;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    border: 0;
+    margin: 12px;
+
+    &:focus {
+      outline: 0;
+      background: white;
+
+      & + label {
+        opacity: 0;
+      }
+    }
+
+    &.valid {
+      background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iM2YxOWFjZGEtYTE1ZC00Njk0LTg5NTUtZjIxMmMxZjNmMjJjIiBkYXRhLW5hbWU9IkxheWVyIDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDY3LjUgNjcuNSI+PHRpdGxlPmNoZWNrPC90aXRsZT48cGF0aCBkPSJNMzUuNCw0NWwtOCw4TDkuNTcsMzUuMWw4LTgsOS45Miw5LjkyTDUwLDE0LjUzbDgsOFpNMzMuNzUsMEEzMy43NSwzMy43NSwwLDEsMCw2Ny41LDMzLjc1LDMzLjc1LDMzLjc1LDAsMCwwLDMzLjc1LDBaIiBmaWxsPSIjNDFkODczIi8+PC9zdmc+);
+      background-size: 20px;
+      background-repeat: no-repeat;
+      background-position: right 30px top;
+
+      & + label {
+        opacity: 0;
+      }
+    }
+
+    &.invalid:not(:placeholder-shown) {
+      background-color: #FF3F3F;
+      color: white;
+      font-weight: bold;
+      padding: 10px;
+      margin-left: 12px;
+
+      & + label {
+        opacity: 0;
+      }
+    }
+
+    &.invalid {
+      & ~ .requirements {
+        padding: 0px 30px 12px 15px;
+      }
+    }
+  }
+}

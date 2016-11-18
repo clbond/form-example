@@ -3,8 +3,16 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styles: [`
+    button {
+      margin-top: 10px;
+    }`
+  ]
 })
 export class AppComponent {
-  title = 'app works!';
+  private registrationCode: string = 'DEADBEEF';
+
+  onSubmit(value) {
+    alert(`Submit: ${JSON.stringify(value)}`);
+  }
 }
