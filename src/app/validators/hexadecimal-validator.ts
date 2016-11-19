@@ -6,7 +6,7 @@ import {
 } from '@angular/forms';
 
 @Directive({
-  selector: '[validateHexadecimalValue][ngModel]',
+  selector: '[hexadecimal][ngModel]',
   providers: [
     { provide: NG_VALIDATORS, useExisting: HexadecimalValueValidator, multi: true }
   ]
@@ -23,6 +23,6 @@ export class HexadecimalValueValidator {
       return null;
     }
 
-    return {regnCode: 'Please enter a hexadecimal value (alphanumeric, 0-9 and A-F)'};
+    return {hexadecimal: 'Please enter a hexadecimal value (alphanumeric, 0-9 and A-F)'};
   }
 }

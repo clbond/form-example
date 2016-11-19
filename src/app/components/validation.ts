@@ -11,7 +11,6 @@ import {Component, Input} from '@angular/core';
     .validation {
       color: #999;
       margin: 12px;
-      transition: 150ms ease-in;
     }`
   ]
 })
