@@ -1,11 +1,13 @@
 <h1>My form!</h1>
 
+<h4>Enter a hexadecimal value, like <span style="font-family: monospace">34d7f03</span></h4>
+
 <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
   <form-text
     required
-    validateRegistrationCode
-    name="registrationCode"
-    [(ngModel)]="registrationCode">
+    validateHexadecimalValue
+    name="hexadecimalValue"
+    [(ngModel)]="hexadecimalValue">
   </form-text>
 
   <button type="Submit">Submit</button>

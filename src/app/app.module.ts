@@ -10,14 +10,14 @@ import {
   ValidationMessagesComponent,
 } from './components';
 
-import { RegistrationCodeValidator } from './validators/registration-code';
+import { HexadecimalValueValidator } from './validators';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormTextComponent,
     ValidationMessagesComponent,
-    RegistrationCodeValidator,
+    HexadecimalValueValidator,
   ],
   imports: [
     BrowserModule,

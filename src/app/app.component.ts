@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
   ]
 })
 export class AppComponent {
-  private registrationCode: string = 'DEADBEEF';
+  private hexadecimalValue: string = '345d20';
 
   onSubmit(value) {
     alert(`Submit: ${JSON.stringify(value)}`);

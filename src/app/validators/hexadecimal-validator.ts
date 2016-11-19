@@ -6,14 +6,14 @@ import {
 } from '@angular/forms';
 
 @Directive({
-  selector: '[validateRegistrationCode][ngModel]',
+  selector: '[validateHexadecimalValue][ngModel]',
   providers: [
-    { provide: NG_VALIDATORS, useExisting: RegistrationCodeValidator, multi: true }
+    { provide: NG_VALIDATORS, useExisting: HexadecimalValueValidator, multi: true }
   ]
 })
-export class RegistrationCodeValidator {
+export class HexadecimalValueValidator {
   validate(control: AbstractControl): {[validator: string]: string} {
-    const expression = /^([0-9a-fA-F]{8})$/i;
+    const expression = /^([0-9a-fA-F]+)$/i;
     if (!control.value) { // the [required] validator will check presence, not us
       return null;
     }
