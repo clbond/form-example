@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import {Directive} from '@angular/core';
 
 import {
   NG_VALIDATORS,
@@ -23,6 +23,6 @@ export class HexadecimalValueValidator {
       return null;
     }
 
-    return {regnCode: 'Invalid registration code'};
+    return {regnCode: 'Please enter a hexadecimal value (alphanumeric, 0-9 and A-F)'};
   }
 }

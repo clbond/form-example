@@ -1,4 +1,4 @@
-import { browser, element, by } from 'protractor';
+import {browser, element, by} from 'protractor';
 
 export class FormExamplePage {
   navigateTo() {

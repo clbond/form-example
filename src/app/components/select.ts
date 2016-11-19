@@ -16,17 +16,17 @@ import {
 import {ElementBase, animations} from '../form';
 
 @Component({
-  selector: 'form-text',
+  selector: 'form-select',
   template: `
     <div>
       <label *ngIf="label" [attr.for]="identifier">{{label}}</label>
-      <input
-        type="text"
-        [placeholder]="placeholder"
-        [(ngModel)]="value"
-        [ngClass]="{invalid: (invalid | async)}"
-        [id]="identifier"
-      />
+      <select
+          [(ngModel)]="value"
+          [ngClass]="{invalid: (invalid | async)}"
+          [id]="identifier">
+        <option value="" disabled selected *ngIf="placeholder">{{placeholder}}</option>
+        <ng-content></ng-content>
+      </select>
       <validation
         [@flyInOut]="'in,out'"
         *ngIf="invalid | async"
@@ -37,17 +37,17 @@ import {ElementBase, animations} from '../form';
   animations,
   providers: [{
     provide: NG_VALUE_ACCESSOR,
-    useExisting: FormTextComponent,
+    useExisting: FormSelectComponent,
     multi: true,
   }],
 })
-export class FormTextComponent extends ElementBase<string> {
+export class FormSelectComponent extends ElementBase<string> {
   @Input() public label: string;
   @Input() public placeholder: string;
 
   @ViewChild(NgModel) model: NgModel;
 
-  public identifier = `form-text-${identifier++}`;
+  public identifier = `form-select-${identifier++}`;
 
   constructor(
     @Optional() @Inject(NG_VALIDATORS) validators: Array<any>,

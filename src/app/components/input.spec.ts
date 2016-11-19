@@ -1,10 +1,10 @@
-import { TestBed, async, tick } from '@angular/core/testing';
-import { Component, ViewChild } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {TestBed, async, tick} from '@angular/core/testing';
+import {Component, ViewChild} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import { FormTextComponent } from './input';
+import {FormTextComponent} from './input';
 
-import { AppModule } from '../app.module';
+import {AppModule} from '../app.module';
 
 describe('FormInput component', () => {
   beforeEach(done => {
@@ -36,7 +36,7 @@ describe('FormInput component', () => {
         const input = element.querySelector('input');
         expect(Array.prototype.indexOf.call(input.classList, 'invalid')).not.toBe(-1);
 
-        const failureMessage = element.querySelector('.requirements');
+        const failureMessage = element.querySelector('.validation');
         expect(failureMessage).not.toBeNull();
         expect(failureMessage.textContent.trim()).toBe('Please enter a value');
       });

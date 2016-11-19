@@ -1,16 +1,15 @@
-import { Component } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styles: [`
-    button {
-      margin-top: 10px;
-    }`
-  ]
+  styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
-  private hexadecimalValue: string = '345d20';
+  public hexadecimalValue: string;
+
+  public dropdownValue: string = '';
 
   onSubmit(value) {
     alert(`Submit: ${JSON.stringify(value)}`);

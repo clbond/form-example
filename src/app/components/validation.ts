@@ -1,20 +1,20 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'validation-messages',
+  selector: 'validation',
   template: `
-    <div class="requirements">
+    <div class="validation">
       <div *ngFor="let message of messages">{{message}}</div>
     </div>
   `,
   styles: [`
-    .requirements {
+    .validation {
       color: #999;
-      transition: 0.28s;
-      margin-left: 12px;
+      margin: 12px;
+      transition: 150ms ease-in;
     }`
   ]
 })
-export class ValidationMessagesComponent {
+export class ValidationComponent {
   @Input() messages: Array<string>;
 }
