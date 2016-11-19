@@ -1,4 +1,3 @@
-import {ViewChild} from '@angular/core';
 import {NgModel} from '@angular/forms';
 
 import {Observable} from 'rxjs';
