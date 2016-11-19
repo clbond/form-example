@@ -8,10 +8,6 @@ import {
 
 import { Observable } from 'rxjs';
 
-// export type AsyncValidator = Validator | AsyncValidatorFn;
-
-// export type SyncValidator = Validator | ValidatorFn;
-
 export type AsyncValidatorArray = Array<Validator | AsyncValidatorFn>;
 
 export type ValidatorArray = Array<Validator | ValidatorFn>;
