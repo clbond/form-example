@@ -1,19 +1,7 @@
-import {
-  Component,
-  Optional,
-  Inject,
-  Input,
-  ViewChild,
-} from '@angular/core';
+import { Component, Inject, Injector, Input, Optional, ViewChild } from '@angular/core';
+import { NG_ASYNC_VALIDATORS, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel } from '@angular/forms';
 
-import {
-  NgModel,
-  NG_VALUE_ACCESSOR,
-  NG_VALIDATORS,
-  NG_ASYNC_VALIDATORS,
-} from '@angular/forms';
-
-import {ElementBase, animations} from '../form';
+import { animations, ElementBase } from '../form';
 
 @Component({
   selector: 'form-select',
@@ -23,13 +11,14 @@ import {ElementBase, animations} from '../form';
       <select
           [(ngModel)]="value"
           [ngClass]="{invalid: (invalid | async)}"
+          [disabled]="disabled"
           [id]="identifier">
         <option value="" disabled selected *ngIf="placeholder">{{placeholder}}</option>
         <ng-content></ng-content>
       </select>
       <validation
         [@flyInOut]="'in,out'"
-        *ngIf="invalid | async"
+        *ngIf="(invalid | async) && !disabled"
         [messages]="failures | async">
       </validation>
     </div>
@@ -40,10 +29,24 @@ import {ElementBase, animations} from '../form';
     useExisting: FormSelectComponent,
     multi: true,
   }],
+  host: {
+    '[attr.disabled]': 'disabled'
+  }
 })
 export class FormSelectComponent extends ElementBase<string> {
+  private _disabled: boolean;
+
   @Input() public label: string;
+
   @Input() public placeholder: string;
+
+  @Input() get disabled() {
+    return this.control ? this.control.disabled : this._disabled;
+  }
+
+  set disabled(value: boolean) {
+    this._disabled = value;
+  }
 
   @ViewChild(NgModel) model: NgModel;
 
@@ -52,8 +55,9 @@ export class FormSelectComponent extends ElementBase<string> {
   constructor(
     @Optional() @Inject(NG_VALIDATORS) validators: Array<any>,
     @Optional() @Inject(NG_ASYNC_VALIDATORS) asyncValidators: Array<any>,
+    injector: Injector
   ) {
-    super(validators, asyncValidators);
+    super(validators, asyncValidators, injector);
   }
 }
 
