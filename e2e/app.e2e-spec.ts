@@ -1,14 +1,14 @@
-import {FormExamplePage} from './app.po';
+import { FormsExamplePage } from './app.po';
 
-describe('form-example App', function() {
-  let page: FormExamplePage;
+describe('forms-example App', () => {
+  let page: FormsExamplePage;
 
   beforeEach(() => {
-    page = new FormExamplePage();
+    page = new FormsExamplePage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('My form!');
   });
 });

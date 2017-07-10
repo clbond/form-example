@@ -18,6 +18,11 @@ button {
   }
 }
 
+form {
+  overflow: hidden;
+  margin: 25px;
+}
+
 form > * > div {
   display: flex;
   margin: 6%;
@@ -59,7 +64,7 @@ form > * > div {
       border: 1px solid red;
     }
 
-    &:not(.invalid) {
+    &:not(.invalid):not([disabled]) {
       background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iM2YxOWFjZGEtYTE1ZC00Njk0LTg5NTUtZjIxMmMxZjNmMjJjIiBkYXRhLW5hbWU9IkxheWVyIDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDY3LjUgNjcuNSI+PHRpdGxlPmNoZWNrPC90aXRsZT48cGF0aCBkPSJNMzUuNCw0NWwtOCw4TDkuNTcsMzUuMWw4LTgsOS45Miw5LjkyTDUwLDE0LjUzbDgsOFpNMzMuNzUsMEEzMy43NSwzMy43NSwwLDEsMCw2Ny41LDMzLjc1LDMzLjc1LDMzLjc1LDAsMCwwLDMzLjc1LDBaIiBmaWxsPSIjNDFkODczIi8+PC9zdmc+);
       background-size: 18px;
       background-repeat: no-repeat;

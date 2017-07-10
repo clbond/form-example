@@ -1,18 +1,11 @@
-import {Directive} from '@angular/core';
+import { Directive, forwardRef } from '@angular/core';
+import { AbstractControl, NG_VALIDATORS } from '@angular/forms';
 
-import {
-  NG_VALIDATORS,
-  AbstractControl,
-} from '@angular/forms';
-
-@Directive({
-  selector: '[hexadecimal][ngModel]',
-  providers: [
-    { provide: NG_VALIDATORS, useExisting: HexadecimalValueValidator, multi: true }
-  ]
-})
-export class HexadecimalValueValidator {
-  validate(control: AbstractControl): {[validator: string]: string} {
+/**
+ * Returns a funcation that validates a hexidecimal value 
+ */
+export function validateHexadecimal() {
+  return (control: AbstractControl) => {
     const expression = /^([0-9a-fA-F]+)$/i;
     if (!control.value) { // the [required] validator will check presence, not us
       return null;
@@ -23,6 +16,23 @@ export class HexadecimalValueValidator {
       return null;
     }
 
-    return {hexadecimal: 'Please enter a hexadecimal value (alphanumeric, 0-9 and A-F)'};
+    return { hexadecimal: 'Please enter a hexadecimal value (alphanumeric, 0-9 and A-F)' };
+  };
+}
+
+@Directive({
+  selector: '[hexadecimal][ngModel],[hexadecimal][formControl],[hexadecimal][formControlName]',
+  providers: [
+    { provide: NG_VALIDATORS, useExisting: forwardRef(() => HexadecimalValueValidator), multi: true }
+  ]
+})
+export class HexadecimalValueValidator {
+  validator: Function;
+  constructor() {
+    this.validator = validateHexadecimal();
+  }
+  
+  validate(control: AbstractControl): { [validator: string]: string } {
+    return this.validator(control);
   }
 }
