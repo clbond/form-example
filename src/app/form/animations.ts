@@ -9,14 +9,14 @@ import {
 
 export const animations: Array<AnimationEntryMetadata> = [
   trigger('flyInOut', [
-    state('in', style({transform: 'translateY(0)'})),
+    state('in', style({transform: 'translateX(0)'})),
     transition('void => *', [
-      style({transform: 'translateY(-100%)'}),
+      style({transform: 'translateX(100%)'}),
       animate(100)
     ]),
-    state('out', style({transform: 'translateY(100%)'})),
+    state('out', style({transform: 'translateX(100%)'})),
     transition('* => void', [
-      animate(100, style({transform: 'translateY(100%)'}))
+      animate(100, style({transform: 'translateX(100%)'}))
     ])
   ])
 ];
